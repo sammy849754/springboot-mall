@@ -6,6 +6,7 @@ import com.sam.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,5 +30,12 @@ public class ProductController {
     }
 
     // 新增商品 (接收json)
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest){
+        Integer productId = productService.createProduct(productRequest);
 
+        Product product = productService.getProductId(productId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(product);
+    }
 }

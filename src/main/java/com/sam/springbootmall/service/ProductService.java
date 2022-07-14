@@ -3,6 +3,8 @@ package com.sam.springbootmall.service;
 import com.sam.springbootmall.dto.ProductRequest;
 import com.sam.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductService {
 
     Product getProductId(Integer productId);
@@ -12,4 +14,6 @@ public interface ProductService {
     void updateProduct(Integer productId, ProductRequest productRequest);
 
     void deleteProduct(Integer productId);
+
+    List<Product> getProducts();
 }
